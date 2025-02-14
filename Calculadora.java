@@ -4,10 +4,30 @@ public class Calculadora {
     // Ainda em andamento
     // Função que lê os tokens e realiza as operações
     public static String ler(ArrayList<String> tokens) {
+        String[] buffer = new String[3];
+
+        // percorre resolvendo todas as operações especiais
+        for(int i = tokens.size() - 2; i < tokens.size(); i -= 2) {
+            if((tokens.get(i).equals("*") || tokens.get(i).equals("/"))) {
+                // Coloca no buffer as variáveis a serem calculadas
+                buffer[0] = tokens.get(i-1);
+                buffer[1] = tokens.get(i);
+                buffer[2] = tokens.get(i+1);
+
+                // Armazena o resultado na variável antes do sinal.
+                tokens.set(i-1, operacao(buffer));
+
+                // Remove o sinal e o que vem depois
+                tokens.remove(i+1);
+                tokens.remove(i);
+            }
+        }
 
         // O buffer tem a função de armazenar os 3
         // caracteres a serem processados
-        String[] buffer = {tokens.get(0), tokens.get(1), tokens.get(2)};
+        buffer[0] = tokens.get(0);
+        buffer[1] = tokens.get(1);
+        buffer[2] = tokens.get(2);
 
         // Armazena sempre no primeiro índice
         // o valor da soma para formar uma pilha de soma
@@ -62,4 +82,5 @@ public class Calculadora {
     public static String dividir(float num, float num2) {
         return Float.toString(num / num2);
     }
+
 }
