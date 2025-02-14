@@ -6,20 +6,23 @@ public class Calculadora {
     public static String ler(ArrayList<String> tokens) {
         String[] buffer = new String[3];
 
-        // percorre resolvendo todas as operações especiais
-        for(int i = tokens.size() - 2; i < tokens.size(); i -= 2) {
-            if((tokens.get(i).equals("*") || tokens.get(i).equals("/"))) {
-                // Coloca no buffer as variáveis a serem calculadas
-                buffer[0] = tokens.get(i-1);
-                buffer[1] = tokens.get(i);
-                buffer[2] = tokens.get(i+1);
+        int j = 1;
+        while (j < tokens.size()) {
+            if(tokens.get(j).equals("*") || tokens.get(j).equals("/")) {
+                buffer[0] = tokens.get(j-1);
+                buffer[1] = tokens.get(j);
+                buffer[2] = tokens.get(j+1);
 
                 // Armazena o resultado na variável antes do sinal.
-                tokens.set(i-1, operacao(buffer));
+                tokens.set(j-1, operacao(buffer));
 
                 // Remove o sinal e o que vem depois
-                tokens.remove(i+1);
-                tokens.remove(i);
+                tokens.remove(j+1);
+                tokens.remove(j);
+            }
+
+            else if (tokens.get(j).equals("+") || tokens.get(j).equals("-")) {
+                j += 2;
             }
         }
 
@@ -56,13 +59,13 @@ public class Calculadora {
             return somar(Float.parseFloat(numeros[0]), Float.parseFloat(numeros[2]));
         }
         else if (numeros[1].equals("-")) {
-            return subtrair(Integer.parseInt(numeros[0]), Integer.parseInt(numeros[2]));
+            return subtrair(Float.parseFloat(numeros[0]), Float.parseFloat(numeros[2]));
         }
         else if (numeros[1].equals("*")) {
-            return multiplicar(Integer.parseInt(numeros[0]), Integer.parseInt(numeros[2]));
+            return multiplicar(Float.parseFloat(numeros[0]), Float.parseFloat(numeros[2]));
         }
         else if (numeros[1].equals("/")) {
-            return dividir(Integer.parseInt(numeros[0]), Integer.parseInt(numeros[2]));
+            return dividir(Float.parseFloat(numeros[0]), Float.parseFloat(numeros[2]));
         }
         return "";
     }
