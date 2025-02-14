@@ -8,15 +8,12 @@ public class Calculadora {
 
         buffer[0] = operacao(buffer);
 
-        System.out.println("Fora do array: " + buffer);
-
         if (tokens.size() > 3) {
-            for(int i = 3; i < tokens.size() - 2; i += 2) {
+            for(int i = 3; i < tokens.size(); i += 2) {
                 buffer[1] = tokens.get(i);
                 buffer[2] = tokens.get(i + 1);
 
                 buffer[0] = operacao(buffer);
-                System.out.println("Dentro Array: " + buffer);
             }
         }
 
@@ -28,10 +25,10 @@ public class Calculadora {
     // Retona um número em String para ser usado na
     // a função ler.
     public static String operacao(String[] numeros) {
-        if (numeros[1] == "+") {
+        if (numeros[1].equals("+")) {
             return somar(Integer.parseInt(numeros[0]), Integer.parseInt(numeros[2]));
         }
-        else if (numeros[1] == "-") {
+        else if (numeros[1].equals("-")) {
             return subtrair(Integer.parseInt(numeros[0]), Integer.parseInt(numeros[2]));
         }
         return "";

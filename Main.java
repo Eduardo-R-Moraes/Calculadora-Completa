@@ -12,7 +12,6 @@ public class Main {
         numeros = scanner.nextLine();
 
         tokens = Tokenizador.tokenizar(numeros);
-        System.out.println(tokens);
 
         String resultado = Calculadora.ler(tokens);
 
