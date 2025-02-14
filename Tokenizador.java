@@ -15,7 +15,8 @@ public class Tokenizador {
     // Método que tranforma uma string em uma lista de tokens
     public static ArrayList<String> tokenizar(String string) {
         ArrayList<String> tokens = new ArrayList<>();
-        char[] numeros = {'0','1','2','3','4','5','6','7','8','9'};
+        char[] numeros = {'0','1','2','3','4','5','6','7','8','9','.'};
+        char[] operacoes = {'+','-','*','/'};
 
         // Variável que vai formar os clusters de números que depois
         // serão armazenados como tokens
@@ -39,7 +40,7 @@ public class Tokenizador {
             }
 
             // Se o caracter for uma operação + ou -
-            else if (string.charAt(i) == '+' || string.charAt(i) == '-') {
+            else if (in(operacoes, string.charAt(i))) {
                 
                 // Adiciona o cluster de números formados
                 tokens.add(buffer);
