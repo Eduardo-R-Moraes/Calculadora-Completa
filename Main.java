@@ -13,11 +13,12 @@ public class Main {
 
         tokens = Tokenizador.tokenizar(numeros);
         System.out.println(tokens);
-
+        
         String resultado = Calculadora.ler(tokens);
 
         System.out.println("Resultado: " + resultado);
-
+        
         scanner.close();
+         
     }
 }
