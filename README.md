@@ -1,7 +1,7 @@
 ## Calculadora completa
 O objetivo desse código foi rever conceitos do Java e aprender novos como ArrayList<>.
 Este código é uma calculadora que recebe uma string e calcula o valor, como uma calculadora. 
-Exemplo de entrada: 1 + 1 / 2 * 3 * -1 --saída--> -0,5. Não foi implementado a prioridade dos ( ), [ ] e { }.
+Exemplo de entrada: 1 + 1 / 2 * 3 * -1 -saída-> -0,5. Não foi implementado a prioridade dos ( ), [ ] e { }.
 
 ### Explicando algoritmo:
 1. O código recebe um string contendo números e operações.
